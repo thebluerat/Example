@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="db">
+  <select id="select" resultType="hashmap">
+    SELECT NAME, 
+           ip, 
+		   DATE_FORMAT(regDate, '%Y-%m-%d %H:%i:%s') as regDate 
+      FROM DB_STATUS
+  ORDER BY regDate desc
+     LIMIT 0, 10 
+  </select>
+  <insert id="insert" parameterType="hashmap">
+  	INSERT INTO DB_STATUS (name, ip) values (#{name}, #{ip})
+  </insert>  
+</mapper>
